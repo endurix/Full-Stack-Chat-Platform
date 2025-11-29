@@ -1,4 +1,4 @@
-# Full Stack Chat Platform
+# Full Stack Chat 
 
 This project provides a complete chat platform that integrates PocketBase for user management and data storage, Ollama for language model inference, and Svelte for the frontend interface. The application supports simultaneous conversations with multiple AI models and includes comprehensive chat management features.
 
