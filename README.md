@@ -1,69 +1,90 @@
-# Full-stack-bun-pocketbase-svelte
+# Full Stack Chat Platform
 
-[demo.webm](https://github.com/rnbwdsh/full-stack-bun-svelte/assets/9084941/80ddc3dd-0e4d-4d8b-a395-1903f2793133)
+This project provides a complete chat platform that integrates PocketBase for user management and data storage, Ollama for language model inference, and Svelte for the frontend interface. The application supports simultaneous conversations with multiple AI models and includes comprehensive chat management features.
 
-## Requirements
+## Technology Stack
 
-This project runs with node.js or bun as a server. You can replace any "bun" statement with "node" in the following.
+- **Frontend**: Svelte with TypeScript
+- **Backend Runtime**: Bun (Node.js compatible)
+- **Database & Auth**: PocketBase
+- **AI Models**: Ollama integration
+- **Build System**: Vite
+- **Styling**: Pico CSS
 
-To install, you just run `bun i`, to start the pocketbase server, run `bun run pocketbase` and to run the main app, run `bun run dev`.
+## Prerequisites
 
-To build the app, run `bun run build`, to run the production preview server, run `bun run preview`.
+- Bun runtime (or Node.js as alternative)
+- Ollama server with at least one model installed (e.g., llama3, gemma)
+- Linux environment (for included PocketBase binary)
 
-## External dependencies
+## Installation & Setup
 
-The app expects you to have a pocketbase server running (linux binary in the /pb/ directory) at its default port 8090 and an ollama server at its default port 11434.
+```bash
+# Install dependencies
+bun install
 
-If they run at any other port or not localhost, change the vite.config.ts. This also by default exposes the pocketbase admin ui at `/_/`. This app runs at port 1337 on http.
+# Start PocketBase database server
+bun run pocketbase
 
-You should also have some models in ollama installed, i.e. llama2, llama3, gemma... you can do this with `ollama pull llama3`.
+# Start development server
+bun run dev
 
-The app will automatically reverse-proxy via vite to the pocketbase server and the ollama server, so you only have to expose the vite port.
+# Build for production
+bun run build
 
-## What can it do?
+# Preview production build
+bun run preview
+```
 
-- User management via pocketbase (login with google/github... optional)
-- Query your favourite LLMs via ollama
-- Manage your chats and messages via pocketbase (create, list, delete, update name)
-- Support for multi-model querying and multi-time querying. Pop the accordion to see the results.
-- Switch models mid conversation
-- Innovative double-enter to send message
+## Service Configuration
 
-## Cool packages used and what they do
+- Application: http://localhost:1337
+- PocketBase: http://localhost:8090
+- Ollama: http://localhost:11434
+- PocketBase Admin UI: http://localhost:1337/_/
 
-- Modern icon design via `@fortawesome/free-solid-svg-icons` and `svelte-fa`
-- Slim css and dark mode and possibly theming via `@picocss/pico`
-- Ollama and pocketbase api clients via `ollama` and `pocketbase` - they even do streaming!
-- Formatted llm output via `svelte-markdown`
-- Permanent db storage via `pocketbase` and local storage via ` svelte-persisted-store`
-- Auto-resizing textarea via `svelte-autosize`. Plain html/css can't do that appearently.
-- Autoscrolling chats to the bottom - that's not a css/html feature
+The development server automatically proxies requests to both PocketBase and Ollama services.
 
-## More
+## Features
 
-* **Author**: Markus V.
+### User Management
+- Complete authentication system via PocketBase
+- Support for OAuth providers (Google, GitHub, etc.)
+- User session management
 
-* **Señor lecturer**: Dr. Markus W. y ChatGPT4
+### Chat System
+- Create and manage multiple chat conversations
+- Simultaneous queries to multiple AI models
+- Real-time streaming responses
+- Model switching during conversations
+- Chat history persistence
 
-* **Lecture de señor**: Full stack web development @ JKU Linz
+### Interface
+- Multiple layout modes including compact view
+- Auto-resizing message input
+- Live markdown rendering of AI responses
+- Automatic chat scrolling
+- Dark mode support
 
-* **Coding time**: Roughly 30-40h with no prior knowledge of SvelteKit / pocketbase
+### Technical Features
+- Double Enter keypress for message sending
+- Local storage for user preferences
+- TypeScript throughout the codebase
+- ESLint and Prettier configuration
 
-* **License**: Create commons Zero v1.0 Universal. You can do whatever you want with this code. It's yours now. Enjoy!
+## Project Structure
 
-* **Inspiration**: Ollama WebUI aka [Open WebUI](https://github.com/open-webui/open-webui)
+```
+src/ - Application source code
+pb/ - PocketBase server and configuration
+static/ - Static assets
+tests/ - Test suites
+```
 
-* **Video**: Shot in real time, Geforce 2070S, i7-13700, Firefox, OBS
+## Development Notes
 
-## Screenshots
+This project was developed over approximately 30-40 hours as part of a full-stack web development course at JKU Linz. The implementation includes no prior experience with SvelteKit or PocketBase, demonstrating a rapid learning and development cycle.
 
-The app has multiple layouts to display the multi-chat feature, in addition to a compact mode.
+## License
 
-![layout-0-0](demo/layout-0-0.png)
-![layout-0-1](demo/layout-0-1.png)
-![layout-1-0](demo/layout-1-0.png)
-![layout-1-1](demo/layout-1-1.png)
-
-Bright mode
-
-![layout-bright](demo/layout-bright.png)
+Creative Commons Zero v1.0 Universal - You are free to use, modify, and distribute this code for any purpose.
